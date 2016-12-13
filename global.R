@@ -28,17 +28,17 @@ ds <- list_parse2(f_d)
 names(f_d) <- NULL
 
 to_sub<-field1$drilldown[1:13]
+
 for (t in to_sub) {
-# # # #   assign(paste0("an_", t),data_frame(
-# # # #     name = as.character(drill[drill$type==t,]$fs),
-# # # #     value = drill[drill$type==t,]$amount))
-# # # # } 
-# # # # 
-# # # # 
-# # # # to_sub_ori<-levels(byori$type)
-# # # # 
-# # # # for (t in to_sub_ori) {
-# # # #   assign(paste0("subori_",t),data_frame(
-# # # #     name = as.character(byori[byori$type==t,]$place),
-# # # #     value = byori[byori$type==t,]$amount))
-# # # # }
+  assign(paste0("an_", t),data_frame(
+     name = as.character(drill[drill$type==t,]$fs),
+     value = drill[drill$type==t,]$amount))
+ } 
+
+to_sub_ori<-levels(byori$type)
+
+for (t in to_sub_ori) {
+   assign(paste0("subori_",t),data_frame(
+   name = as.character(byori[byori$type==t,]$place),
+   value = byori[byori$type==t,]$amount))
+}

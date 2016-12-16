@@ -1,4 +1,5 @@
 library(dplyr)
+library(purrr)
 library(xlsx)
 library(highcharter)
 origin<-read.xlsx('isfinal.xlsx',
@@ -24,7 +25,7 @@ mo<-read.xlsx('isfinal.xlsx',
 f_d<-data_frame(name=field1$fs,
                 y=field1$amo,
                 drilldown=field1$drilldown)
-ds <- list_parse2(f_d)
+ds <- list_parse(f_d)
 names(f_d) <- NULL
 
 to_sub<-field1$drilldown[1:13]
